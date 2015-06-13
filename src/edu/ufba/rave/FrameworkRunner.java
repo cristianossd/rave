@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import edu.ufba.rave.command.AddCategoryCommand;
+import edu.ufba.rave.command.AddCategoryToItemCommand;
+import edu.ufba.rave.command.AddItemCommand;
 import edu.ufba.rave.command.ICommand;
 import edu.ufba.rave.command.RemoveCategoryCommand;
+import edu.ufba.rave.log.Logger;
 
 public class FrameworkRunner {
 
@@ -16,10 +19,13 @@ public class FrameworkRunner {
 
     commandHash.put("addCategory", new AddCategoryCommand());
     commandHash.put("removeCategory", new RemoveCategoryCommand());
+    commandHash.put("addItem", new AddItemCommand());
+    commandHash.put("addCategoryToItem", new AddCategoryToItemCommand());
   }
 
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
+    Logger.configure(System.out);
 
     System.out.print("Welcome to Rave CLI 0.1 version\nType help for more commands information.\n\n");
 
@@ -43,7 +49,7 @@ public class FrameworkRunner {
     String[] cmdParts = cmdLine.split(" ");
 
     String cmd = cmdParts[0];
-    String[] params = new String[cmdParts.length];
+    String[] params = new String[cmdParts.length - 1];
 
     for (int i = 1; i < cmdParts.length; i++) {
       params[i - 1] = cmdParts[i];

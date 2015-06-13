@@ -26,8 +26,12 @@ public class CategoriesCtrl {
     this.categories.put(category.getName(), category);
   }
 
-  public void remove(String categoryName) {
-    this.categories.remove(categoryName);
+  public boolean remove(String categoryName) {
+    return this.categories.remove(categoryName) != null;
+  }
+
+  public Category get(String categoryName) {
+    return this.categories.get(categoryName);
   }
 
   public ArrayList<Category> getAll() {
