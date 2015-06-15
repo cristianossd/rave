@@ -6,6 +6,7 @@ import java.util.Scanner;
 import edu.ufba.rave.command.AddCategoryCommand;
 import edu.ufba.rave.command.AddCategoryToItemCommand;
 import edu.ufba.rave.command.AddItemCommand;
+import edu.ufba.rave.command.ExportItemCommand;
 import edu.ufba.rave.command.ICommand;
 import edu.ufba.rave.command.ImportItemCommand;
 import edu.ufba.rave.command.RemoveCategoryCommand;
@@ -23,6 +24,7 @@ public class FrameworkRunner {
     commandHash.put("addItem", new AddItemCommand());
     commandHash.put("addCategoryToItem", new AddCategoryToItemCommand());
     commandHash.put("importItem", new ImportItemCommand());
+    commandHash.put("exportItem", new ExportItemCommand());
   }
 
   public static void main(String[] args) {

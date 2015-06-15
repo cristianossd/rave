@@ -2,7 +2,6 @@ package edu.ufba.rave.command;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 import edu.ufba.rave.io.AbstractItemImporter;
@@ -31,14 +30,16 @@ public class ImportItemCommand implements ICommand {
     File f = new File(filePath);
 
     try {
-      boolean res = importer.importItems(new FileInputStream(f));
+      FileInputStream in = new FileInputStream(f);
+      boolean res = importer.importItems(in);
+      in.close();
 
       if (res) {
         Logger.info("Items imported with success!\n");
       } else {
         Logger.info("Items was not imported with success!\n");
       }
-    } catch (FileNotFoundException e) {
+    } catch (Exception e) {
       Logger.err("The file was not found!\n");
       return;
     }
