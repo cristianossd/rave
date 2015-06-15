@@ -7,6 +7,7 @@ import edu.ufba.rave.command.AddCategoryCommand;
 import edu.ufba.rave.command.AddCategoryToItemCommand;
 import edu.ufba.rave.command.AddItemCommand;
 import edu.ufba.rave.command.ICommand;
+import edu.ufba.rave.command.ImportItemCommand;
 import edu.ufba.rave.command.RemoveCategoryCommand;
 import edu.ufba.rave.log.Logger;
 
@@ -21,6 +22,7 @@ public class FrameworkRunner {
     commandHash.put("removeCategory", new RemoveCategoryCommand());
     commandHash.put("addItem", new AddItemCommand());
     commandHash.put("addCategoryToItem", new AddCategoryToItemCommand());
+    commandHash.put("importItem", new ImportItemCommand());
   }
 
   public static void main(String[] args) {
